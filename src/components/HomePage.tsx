@@ -50,7 +50,7 @@ const HomePage = () => {
   return (
     <section className="flex flex-col w-screen h-screen bg-gray">
       {/* header */}
-      <header className="relative flex mt-8 mx-10 tracking-[0.1em] justify-start text-17xl ">
+      <header className="relative flex mt-8 mx-12 tracking-[0.1em] justify-start text-17xl ">
           <div className="text-peachpuff font-inter font-bold">AI Challenge 2024</div>
           <img src={Line} alt="" className="w-2 h-12 object-cont mx-2"/>
           <div className="text-peachpuff font-inter font-bold">SecTon</div>
@@ -59,7 +59,7 @@ const HomePage = () => {
         </a>
       </header>
       {/* tagbar */}
-      <div className="flex justify-start mx-10 mt-4 gap-8 ">
+      <div className="flex justify-start mx-12 mt-4 gap-8 ">
         {buttonLabels.map((label, index) => (
             <button key={index} 
             className={`px-6 py-2 text-base font-semibold font-inter text-center rounded-[20px] ${chosenLabels.includes(label) ? 'bg-gainsporo text-black' : 'bg-slategray text-white'}`}
@@ -68,10 +68,11 @@ const HomePage = () => {
             </button>
           ))}
       </div>
-      {/* prompt */}
-      <div className="flex flex-row mx-10 mt-4 h-3/4 gap-8">
+      {/* main */}
+      <div className="flex flex-row mx-12 mt-4 h-3/4 gap-8">
+        {/* prompt */}
         <div className="h-[95%] w-1/4 bg-slategray rounded-xl p-5">
-        <textarea className="w-full h-1/3 bg-gainsboro text-black font-inter text-xl rounded-[16px] py-2 resize-none scrollbar-hide" placeholder="Prompt goes here..."></textarea>
+        <textarea className="w-full h-1/3 bg-gainsboro text-black font-inter text-base rounded-[16px] py-2 resize-none scrollbar-hide" placeholder="Prompt goes here..."></textarea>
         <div className={`flex flex-wrap justify-start ${(chosenLabels.length ==0) ? "h-[32px]" : ""}`}>
           {chosenLabels.map((label, index) => (
             <button key={index} className="w-1/6 p-1 bg-gainsporo text-sm font-semibold font-inter text-black text-center rounded-[20px] m-1">
@@ -86,13 +87,11 @@ const HomePage = () => {
         <div className="w-2/3 overflow-y-auto scrollbar-thin pr-4">
           <h1 className="font-inter my-1 text-peachpuff text-xl">Other Suggestions</h1>
           <div className=" grid grid-cols-3 gap-4 ">
-          {imageList.map((image, index) => (
+          {imageList.map((image) => (
           <Display src={image.src} alt={image.alt} content="content here"/>
           ))}
         </div>
         </div>
-        
-       
       </div>
       
     </section>
