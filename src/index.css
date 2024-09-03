@@ -3,14 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   @apply leading-[normal] m-0;
 }
+
 *,
 ::before,
 ::after {
   border-width: 0;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -29,8 +32,89 @@ body {
   background-color: #5C5C5C;
   border-radius: 100px;
 }
+
 .scrollbar-thin::-webkit-scrollbar-thumb {
   border-radius: 100px;
   background: #D8D9DA;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.homepage-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.blur-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5); /* Optional: Add a semi-transparent overlay */
+  backdrop-filter: blur(1px); /* Adjust the blur intensity */
+  z-index: 5; /* Ensure the blur effect is below the video */
+}
+
+.video-wrapper {
+  position: relative;
+  z-index: 10; /* Ensure the video is above the blurred background */
+}
+
+.video-responsive {
+  width: 100%;
+  height: auto;
+  max-width: 800px; /* Optional: Set a max-width */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.video-responsive.zoomed-in {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5); /* Center and zoom in */
+  z-index: 20; /* Ensure the zoomed-in video is above everything else */
+}
+
+.play-button {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem; /* Reduce font-size to make the triangle smaller */
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 60px; /* Set width to ensure circular shape */
+  height: 60px; /* Set height to ensure circular shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 30; /* Ensure the play button is above the video */
+}
+
+.close-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 30; /* Ensure the close button is above the zoomed-in video */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the overlay is above everything else */
 }
